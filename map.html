@@ -54,141 +54,174 @@
         'clair': CartoDB_Positron,
         'nuit': Stadia_AlidadeSmoothDark
     };
-
     var polygon1 = L.polygon([
-        [48.27071, 4.08477],
-        [48.27025, 4.08402],
-        [48.27050, 4.08361],
-        [48.27098, 4.08442]
-    ], {
-        color: '#5e7f38',
-    }).addTo(map);
+    [48.27071, 4.08477],
+    [48.27025, 4.08402],
+    [48.27050, 4.08361],
+    [48.27098, 4.08442]
+], {
+    color: '#5e7f38',
+    alt: 'jardins ouvriers et familiaux'
+}).addTo(map);
 
-   
-    var polygon2 = L.polygon([
-        [48.28657, 4.10130],
-        [48.28582, 4.10234],
-        [48.28608, 4.10315],
-        [48.28712, 4.10227]
-    ], {
-        color: '#5e7f38',
-    }).addTo(map);
-    var polygon3 = L.polygon([
-        [48.30483,4.06099],
-        [48.30613,4.06385],
-        [48.30501,4.06503],
-        [48.30386,4.06256],
-        [48.30405,4.06188]
-    ], {
-        color: '#5e7f38',
-    }).addTo(map);
 
-    var polygon3 = L.polygon([
-        [48.30483,4.06099],
-        [48.30613,4.06385],
-        [48.30501,4.06503],
-        [48.30386,4.06256],
-        [48.30405,4.06188]
-    ], {
-        color: '#5e7f38',
-    }).addTo(map);
+var polygon2 = L.polygon([
+    [48.28657, 4.10130],
+    [48.28582, 4.10234],
+    [48.28608, 4.10315],
+    [48.28712, 4.10227]
+], {
+    color: '#5e7f38',
+    alt: 'l\'accord parfait'
+}).addTo(map);
 
-    var polygon4 = L.polygon([
-        [48.31037,4.08727],
-        [48.31053,4.08807],
-        [48.30996,4.08824],
-        [48.30961,4.08725],
-    ], {
-        color: '#5e7f38',
-    }).addTo(map);
 
-    var polygon5 = L.polygon([
-        [48.28869,4.06285],
-        [48.28896,4.06368],
-        [48.28966,4.06322],
-        [48.28948,4.06262],
-    ], {
-        color: '#5e7f38',
-    }).addTo(map);
+var polygon3 = L.polygon([
+    [48.30483,4.06099],
+    [48.30613,4.06385],
+    [48.30501,4.06503],
+    [48.30386,4.06256],
+    [48.30405,4.06188]
+], {
+    color: '#5e7f38',
+    alt: 'jardin de partage'
+}).addTo(map);
 
-    var polygon6 = L.polygon([
-        [48.29491,4.07697],
-        [48.29532,4.07635],
-        [48.29575,4.07699],
-        [48.29528,4.07752],
-    ], {
-        color: '#5e7f38',
-    }).addTo(map);
 
-    var polygon7 = L.polygon([
-        [48.28616,4.08719],
-        [48.28668,4.08829],
-        [48.28629,4.08875],
-        [48.28568,4.08790],
-    ], {
-        color: '#5e7f38',
-    }).addTo(map);
+var polygon4 = L.polygon([
+    [48.31037,4.08727],
+    [48.31053,4.08807],
+    [48.30996,4.08824],
+    [48.30961,4.08725],
+], {
+    color: '#5e7f38',
+    alt: 'secours catholique'
+}).addTo(map);
 
-    var polygon8 = L.polygon([
-        [48.29498,4.08598],
-        [48.29542,4.08662],
-        [48.29515,4.086999],
-        [48.29479,4.08621],
-    ], {
-        color: '#5e7f38',
-    }).addTo(map);
 
-    var polygon9 = L.polygon([
-        [48.26935,4.07955],
-        [48.26907,4.08012],
-        [48.26882,4.07988],
-        [48.26913,4.07921],
-    ], {
-        color: '#5e7f38',
-    }).addTo(map);
+var polygon5 = L.polygon([
+    [48.28869,4.06285],
+    [48.28896,4.06368],
+    [48.28966,4.06322],
+    [48.28948,4.06262],
+], {
+    color: '#5e7f38',
+    alt: 'jardins rue louis blanc'
+}).addTo(map);
 
-    var polygon10 = L.polygon([
-        [48.27932,4.06218],
-        [48.27864,4.06363],
-        [48.27825,4.06339],
-        [48.27894,4.06196],
-    ], {
-        color: '#5e7f38',
-    }).addTo(map);
 
-    var marker1 = L.marker([48.27066, 4.08424], {
-        icon: carotte
-    }).addTo(map);
+var polygon6 = L.polygon([
+    [48.29491,4.07697],
+    [48.29532,4.07635],
+    [48.29575,4.07699],
+    [48.29528,4.07752],
+], {
+    color: '#5e7f38',
+    alt: 'jardins quartier seguin'
+}).addTo(map);
 
-    var marker2 = L.marker([48.28645, 4.10231], {
-        icon: carotte
-    }).addTo(map);
 
-    var marker3 = L.marker([48.30503,4.06307], {
-        icon: carotte
-    }).addTo(map);
-    var marker4 = L.marker([48.31014,4.08774], {
-        icon: carotte
-    }).addTo(map);
-    var marker5 = L.marker([48.28919,4.06313], {
-        icon: carotte
-    }).addTo(map);
-    var marker6 = L.marker([48.29533,4.07697], {
-        icon: carotte
-    }).addTo(map);
-    var marker7 = L.marker([48.28630,4.08808], {
-        icon: carotte
-    }).addTo(map); 
-    var marker8 = L.marker([48.29511,4.08649], {
-        icon: carotte
-    }).addTo(map); 
-    var marker9 = L.marker([48.26914,4.07959], {
-        icon: carotte
-    }).addTo(map);
-    var marker10 = L.marker([48.27881,4.06275], {
-        icon: carotte
-    }).addTo(map);
-    const layerControl = L.control.layers(baseLayers).addTo(map);
+var polygon7 = L.polygon([
+    [48.28616,4.08719],
+    [48.28668,4.08829],
+    [48.28629,4.08875],
+    [48.28568,4.08790],
+], {
+    color: '#5e7f38',
+    alt: 'jardin partagé des viennes'
+}).addTo(map);
+
+
+var polygon8 = L.polygon([
+    [48.29498,4.08598],
+    [48.29542,4.08662],
+    [48.29515,4.086999],
+    [48.29479,4.08621],
+], {
+    color: '#5e7f38',
+    alt: 'les jardins familiaux'
+}).addTo(map);
+
+
+var polygon9 = L.polygon([
+    [48.26935,4.07955],
+    [48.26907,4.08012],
+    [48.26882,4.07988],
+    [48.26913,4.07921],
+], {
+    color: '#5e7f38',
+    alt: 'jardin jules guesde'
+}).addTo(map);
+
+
+var polygon10 = L.polygon([
+    [48.27932,4.06218],
+    [48.27864,4.06363],
+    [48.27825,4.06339],
+    [48.27894,4.06196],
+], {
+    color: '#5e7f38',
+    alt: 'jardin ouvert'
+}).addTo(map);
+var marker1 = L.marker([48.27066, 4.08424], {
+    icon: carotte,
+    alt: 'jardins ouvriers et familiaux'
+}).addTo(map).bindPopup("jardins ouvriers et familiaux<br>120 Av. Edouard Herriot, 10000 Troyes");
+
+
+var marker2 = L.marker([48.28645, 4.10231], {
+    icon: carotte,
+    alt: 'l\'accord parfait'
+}).addTo(map).bindPopup("l'accord parfait<br>43 Rue de la Brûlée, 10000 Troyes");
+
+
+var marker3 = L.marker([48.30503,4.06307], {
+    icon: carotte,
+    alt: 'jardin de partage'
+}).addTo(map).bindPopup("jardin de partage<br>31,2 Av. Marie de Champagne, 10000 Troyes");
+
+
+var marker4 = L.marker([48.31014,4.08774], {
+    icon: carotte,
+    alt: 'secours catholique'
+}).addTo(map).bindPopup("secours catholique<br>3 Rue Raymond Claudel, 10000 Troyes");
+
+
+var marker5 = L.marker([48.28919,4.06313], {
+    icon: carotte,
+    alt: 'jardins rue louis blanc'
+}).addTo(map).bindPopup("jardins rue louis blanc<br>42 Av. du Président Wilson, 10120 Saint-André-les-Vergers");
+
+
+var marker6 = L.marker([48.29533,4.07697], {
+    icon: carotte,
+    alt: 'jardins quartier seguin'
+}).addTo(map).bindPopup("jardins quartier seguin<br>12 Rue Raymond Poincaré, 10000 Troyes");
+
+
+var marker7 = L.marker([48.28630,4.08808], {
+    icon: carotte,
+    alt: 'jardin partagé des viennes'
+}).addTo(map).bindPopup("jardin partagé des viennes<br>4 Rue Guillaume le Bé, 10000 Troyes");
+
+
+var marker8 = L.marker([48.29511,4.08649], {
+    icon: carotte,
+    alt: 'les jardins familiaux'
+}).addTo(map).bindPopup("les jardins familiaux<br>12 Rue de l'Abreuvoir de la Pielle, 10000 Troyes");
+
+
+var marker9 = L.marker([48.26914,4.07959], {
+    icon: carotte,
+    alt: 'jardin jules guesde'
+}).addTo(map).bindPopup("jardin jules guesde<br>H, 10430 Rosières-prés-Troyes");
+
+
+var marker10 = L.marker([48.27881,4.06275], {
+    icon: carotte,
+    alt: 'jardin ouvert'
+}).addTo(map).bindPopup("jardin ouvert<br>8 Rue Pierre Delostal, 10120 Saint-André-les-Vergers");
+
 </script>
 
 <!-- Code injected by live-server -->
