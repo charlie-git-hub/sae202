@@ -18,6 +18,13 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
 <script>
+    var carotte = L.icon({
+    iconUrl: 'indicateur_carte.svg',
+
+    iconSize:     [30, 140], 
+    iconAnchor:   [22, 94], 
+    popupAnchor:  [-3, -76] 
+});
     const osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>'
@@ -57,10 +64,7 @@
         color: '#5e7f38',
     }).addTo(map);
 
-    var marker1 = L.marker([48.27066, 4.08424], {
-        color: '#516522',
-    }).addTo(map);
-
+   
     var polygon2 = L.polygon([
         [48.28657, 4.10130],
         [48.28582, 4.10234],
@@ -69,11 +73,121 @@
     ], {
         color: '#5e7f38',
     }).addTo(map);
-
-    var marker2 = L.marker([48.28645, 4.10231], {
-        color: '#516522',
+    var polygon3 = L.polygon([
+        [48.30483,4.06099],
+        [48.30613,4.06385],
+        [48.30501,4.06503],
+        [48.30386,4.06256],
+        [48.30405,4.06188]
+    ], {
+        color: '#5e7f38',
     }).addTo(map);
 
+    var polygon3 = L.polygon([
+        [48.30483,4.06099],
+        [48.30613,4.06385],
+        [48.30501,4.06503],
+        [48.30386,4.06256],
+        [48.30405,4.06188]
+    ], {
+        color: '#5e7f38',
+    }).addTo(map);
+
+    var polygon4 = L.polygon([
+        [48.31037,4.08727],
+        [48.31053,4.08807],
+        [48.30996,4.08824],
+        [48.30961,4.08725],
+    ], {
+        color: '#5e7f38',
+    }).addTo(map);
+
+    var polygon5 = L.polygon([
+        [48.28869,4.06285],
+        [48.28896,4.06368],
+        [48.28966,4.06322],
+        [48.28948,4.06262],
+    ], {
+        color: '#5e7f38',
+    }).addTo(map);
+
+    var polygon6 = L.polygon([
+        [48.29491,4.07697],
+        [48.29532,4.07635],
+        [48.29575,4.07699],
+        [48.29528,4.07752],
+    ], {
+        color: '#5e7f38',
+    }).addTo(map);
+
+    var polygon7 = L.polygon([
+        [48.28616,4.08719],
+        [48.28668,4.08829],
+        [48.28629,4.08875],
+        [48.28568,4.08790],
+    ], {
+        color: '#5e7f38',
+    }).addTo(map);
+
+    var polygon8 = L.polygon([
+        [48.29498,4.08598],
+        [48.29542,4.08662],
+        [48.29515,4.086999],
+        [48.29479,4.08621],
+    ], {
+        color: '#5e7f38',
+    }).addTo(map);
+
+    var polygon9 = L.polygon([
+        [48.26935,4.07955],
+        [48.26907,4.08012],
+        [48.26882,4.07988],
+        [48.26913,4.07921],
+    ], {
+        color: '#5e7f38',
+    }).addTo(map);
+
+    var polygon10 = L.polygon([
+        [48.27932,4.06218],
+        [48.27864,4.06363],
+        [48.27825,4.06339],
+        [48.27894,4.06196],
+    ], {
+        color: '#5e7f38',
+    }).addTo(map);
+
+    var marker1 = L.marker([48.27066, 4.08424], {
+        icon: carotte
+    }).addTo(map);
+
+    var marker2 = L.marker([48.28645, 4.10231], {
+        icon: carotte
+    }).addTo(map);
+
+    var marker3 = L.marker([48.30503,4.06307], {
+        icon: carotte
+    }).addTo(map);
+    var marker4 = L.marker([48.31014,4.08774], {
+        icon: carotte
+    }).addTo(map);
+    var marker5 = L.marker([48.28919,4.06313], {
+        icon: carotte
+    }).addTo(map);
+    var marker6 = L.marker([48.29533,4.07697], {
+        icon: carotte
+    }).addTo(map);
+    var marker7 = L.marker([48.28630,4.08808], {
+        icon: carotte
+    }).addTo(map); 
+    var marker8 = L.marker([48.29511,4.08649], {
+        icon: carotte
+    }).addTo(map); 
+    var marker9 = L.marker([48.26914,4.07959], {
+        icon: carotte
+    }).addTo(map);
+    var marker10 = L.marker([48.27881,4.06275], {
+        icon: carotte
+    }).addTo(map);
     const layerControl = L.control.layers(baseLayers).addTo(map);
 </script>
 
