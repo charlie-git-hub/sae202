@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `jardins` (
-  `numero` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `nom` varchar(29) NOT NULL,
   `adresse` varchar(57) NOT NULL,
   `acteur` varchar(55) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `jardins` (
 -- Déchargement des données de la table `jardins`
 --
 
-INSERT INTO `jardins` (`numero`, `nom`, `adresse`, `acteur`, `coordonnées`) VALUES
+INSERT INTO `jardins` (`id`, `nom`, `adresse`, `acteur`, `coordonnées`) VALUES
 (1, 'jardins ouvriers et familiaux', '120 Av. Edouard Herriot, 10000 Troyes', 'association des jardins ouvriers et familiaux de troyes', '48.27066, 4.08424'),
 (2, 'l\'accord parfait', '43 Rue de la Brûlée, 10000 Troyes', 'l\'accord parfait', '48.28645, 4.10231'),
 (3, 'jardin de partag', '31,2 Av. Marie de Champagne, 10000 Troyes', 'le jardin de partage des sénardes', '48.30503,4.06307'),
