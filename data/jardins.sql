@@ -59,7 +59,7 @@ INSERT INTO `jardins` (`id`, `nom`, `adresse`, `acteur`, `coordonnées`) VALUES
 -- Index pour la table `jardins`
 --
 ALTER TABLE `jardins`
-  ADD PRIMARY KEY (`numero`);
+  ADD PRIMARY KEY (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
