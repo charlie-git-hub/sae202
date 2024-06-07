@@ -1,79 +1,69 @@
-<?php
-// Vérification de sélection d'un fichier
-// Récupération des attributs du fichier (nom,type,taille)
-if (!empty($_FILES) && isset($_FILES['image'])) {
+<?php 
+$nom = $_POST['nom']; // Utilisation de $_POST pour récupérer les données du formulaire
+$coordonnees1 = $_POST['coordonnees1'];
+$coordonnees2 = $_POST['coordonnees2'];
+$coordonnees3 = $_POST['coordonnees3'];
+$coordonnees4 = $_POST['coordonnees4'];
+$marker_coordonnees = $_POST['coordonnees'];
+$model = $_FILES['image'];
+var_dump($model);
+require('conf.inc.php');
+$mabd = new PDO('mysql:host='.HOST.';dbname='.DBNAME.';charset=UTF8;',USER,PASSWORD);    
+$mabd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$mabd->query('SET NAMES utf8;');
+$imageName = $_FILES["image"]["name"];
 
-    $image_nom = $_FILES['image']['name'];
-    $image_type = $_FILES['image']['type'];
-    $image_taille = $_FILES['image']['size'];
-    $image_temporaire = $_FILES['image']['tmp_name'];
-    $image_error = $_FILES['image']['error'];
-
-    // Vérification temporaire - A supprimer à la fin de l'exercice
-    echo 'Nom de l\'image : '.$image_nom.'<br>';
-    echo 'Type de fichier : '.$image_type.'<br>';
-    echo 'Taille du fichier : '.$image_taille.'<br>';
-    echo 'Nom temporaire : '.$image_temporaire.'<br>';
-    echo 'Code erreur : '.$image_error.'<br>';
-
-    // Début Vérification de la conformité
-    $affichage_erreurs = '';
-    $erreurs = 0;
-
-    // Test si pas d'erreur de sélection
-    if ($image_error == 0) {
-        // Test format du fichier en fonction de l'extension
-        if ($image_type != 'image/svg+xml' && $image_type != 'image/svg') {
-            $affichage_erreurs .= 'Le fichier n\'est pas au format SVG ou l\'extension est invalide<br>';
-            $erreurs++;
-        }
-
-        // Test format du fichier avec la fonction exif_imagetype
-        $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
-        $mimeType = finfo_file($fileInfo, $image_temporaire);
-        finfo_close($fileInfo);
-
-        if ($mimeType != 'image/svg+xml' && $mimeType != 'image/svg') {
-            $affichage_erreurs .= 'Ce fichier n\'est pas une image SVG<br>';
-            $erreurs++;
-        }
-    } else {
-        $affichage_erreurs .= 'Impossible de télécharger le fichier, erreur de sélection<br>';
-        $erreurs++;
+if ($imageName != "") {
+    // vérification du format de l'image téléchargée
+    $imageType = $_FILES["image"]["type"];
+    if ($imageType != "image/svg+xml") {
+        var_dump($imageType);
+        echo '<p>Désolé, le type d\'image n\'est pas reconnu ! Seuls le format svg  est autorisé.</p>';
+        die();
     }
 
-    // On affiche les erreurs
-    if ($erreurs != 0) {
-        echo $affichage_erreurs;
+    // création d'un nouveau nom pour cette image téléchargée
+    $image_num = $nbFichiers + 1;
+    $nouvelle_image = 'image'.$image_num.'.svg';
+
+    // dépot du fichier téléchargé dans le dossier /var/www/sae203/images/uploads
+    if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
+        if (!move_uploaded_file($_FILES["image"]["tmp_name"], "../data/images/markers/" . $nouvelle_image)) {
+            echo '<p>Problème avec la sauvegarde de l\'image, désolé...</p>';
+            die();
+        }
     } else {
-        echo 'Fichier conforme<br>';
-
-        // On récupère le nombre de fichiers dans images/galerie
-        $nbFichiers = -2; // Le dossier contient deux fichiers cachés . et ..
-        $dossier = opendir("../data/images/markers");
-        while ($fichier = readdir($dossier)) {
-            $nbFichiers++;
-        }
-        closedir($dossier);
-
-        // On renomme le fichier - imageN.svg
-        $image_num = $nbFichiers + 1;
-        $image_nom = 'image'.$image_num.'.svg';
-   
-        // On fixe le nom complet de la destination (chemin relatif/imageN.svg)
-        $destination = "../data/images/markers/".$image_nom;
-
-        // On déplace le fichier dans son emplacement définitif
-        if (move_uploaded_file($image_temporaire, $destination)) {
-            echo 'Téléchargement terminé avec succès<br>';
-        } else {
-            echo 'Erreur de téléchargement<br>';
-        }
+        echo '<p>Problème : image non chargée...</p>';
+        die();
     }
 } else {
-    echo 'Vous devez sélectionner un fichier';
-}
+    $sql = "SELECT COUNT(*) as count FROM votre_table";
+    $id = $sql +1;
+    var_dump($id);
+$req = $mabd->prepare("INSERT INTO entites ( p_point1 = '$coordonnees1',
+                p_point2 = '$coordonnees2',
+                p_point3 = '$coordonnees3',
+                p_point4 = '$coordonnees4',
+                co_marker = '$marker_coordonnees',
+                marker = '$nouvelle_image'
+                 ) VALUES (?, ?, ?, ?, ?, ?, ?)");
+try {
+    $req->execute([$ent, $difficulte, $danger, $outil, $attaque, $nouvelleImage]);
 
-$encodedImageNom = urlencode($image_nom);
-header("Location: ../map.php?image_nom=" . $encodedImageNom);
+    // Afficher un message de succès si aucune exception n'est lancée
+    echo "Les données ont été insérées avec succès.<br>";
+    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../ajout_map.php?ent=' . urlencode($ent) . '";}, 3000);}</script>';
+    exit;
+} catch (PDOException $e) {
+    // En cas d'erreur lors de l'insertion, afficher l'erreur
+    echo "Erreur lors de l'insertion des données : " . $e->getMessage();
+    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../ajout_map.php?ent=' . urlencode($ent) . '";}, 3000);}</script>';
+    exit;
+}
+}
+echo 'juste pour le debug: ' . $req;
+
+
+$encodedImageNom = urlencode($nouvelle_image);
+header("Location: ../map.php")
 exit();
