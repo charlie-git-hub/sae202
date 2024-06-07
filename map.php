@@ -13,7 +13,7 @@
 </head>
 <body>
 <?php
-// Récupérer le nom de l'image depuis les paramètres d'URL et le décoder
+//Récupérer le nom de l'image depuis les paramètres d'URL et le décoder
 $filename = urldecode($_GET['image_nom']);
 
 // Inclure le fichier de configuration pour les informations de connexion à la base de données
@@ -42,18 +42,11 @@ try {
     echo 'Erreur : ' . $e->getMessage();
 }
 foreach ($jardins as $jardin): ?>
-    <tr>
-        <td><?php echo htmlspecialchars($jardin['id']); ?></td>
-        <td><?php echo htmlspecialchars($jardin['nom']); ?></td>
-        <td><?php echo htmlspecialchars($jardin['adresse']); ?></td>
-        <td><?php echo htmlspecialchars($jardin['acteur']); ?></td>
-        <td><?php echo htmlspecialchars($jardin['coordonnées']); ?></td>
-    </tr>
-
 <div id="map"></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
+        
 <script>
     var carotte = L.icon({
     iconUrl: 'data/images/markers/indicateur_carte.svg',
@@ -90,7 +83,19 @@ foreach ($jardins as $jardin): ?>
         'coloré': osmHOT,
         'clair': CartoDB_Positron,
         'nuit': Stadia_AlidadeSmoothDark
-    };
+    };</script>
+<? foreach ($jeux as $jeu){
+    echo '<tr>';
+    echo '<td>' .$jeu['jeu_code'].'</td>';
+    echo '<td>' .$jeu['jeu_nom'].'</td>';
+    echo '<td>' .$jeu['jeu_editeur'].'</td>';
+    echo '<td>' .$jeu['jeu_duree_partie'].'</td>';
+    echo '<td><img width="100px" heigth="100px" src="/views/' .$jeu['jeu_photo1'].'"></td>';
+    echo '<td><img width="100px" heigth="100px" src="/views/' .$jeu['jeu_photo2'].'"></td>';
+    
+    echo '</tr>';
+}?>
+<script>
     var polygon1 = L.polygon([
     [48.27071, 4.08477],
     [48.27025, 4.08402],
@@ -117,7 +122,6 @@ var polygon3 = L.polygon([
     [48.30483,4.06099],
     [48.30613,4.06385],
     [48.30501,4.06503],
-    [48.30386,4.06256],
     [48.30405,4.06188]
 ], {
     color: '#5e7f38',
