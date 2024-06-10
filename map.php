@@ -14,7 +14,7 @@
 <body>
 <?php
 //Récupérer le nom de l'image depuis les paramètres d'URL et le décoder
-$filename = urldecode($_GET['image_nom']);
+// $filename = urldecode($_GET['image_nom']);
 
 // Inclure le fichier de configuration pour les informations de connexion à la base de données
 require ('traitements/conf.inc.php');
@@ -26,8 +26,8 @@ try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Préparer la requête SQL pour récupérer les informations du jardin correspondant au nom de l'image
-    $req = $db->prepare("SELECT * FROM jardins WHERE nom = :nom");
-    $req->execute(array('nom' => $filename));
+    $req = $db->prepare("SELECT * FROM jardins");
+    $req->execute();
 
     // Récupérer tous les résultats de la requête dans un tableau associatif
     $jardins = $req->fetchAll(PDO::FETCH_ASSOC);
@@ -85,19 +85,19 @@ foreach ($jardins as $jardin){
         popupAnchor: [-3, -76]
     });
     var polygon_" .$jardin['id']. "= L.polygon([
-        [".$jardin['p_point_1']."],
-        [".$jardin['p_point_2']."],
-        [".$jardin['p_point_3']."],
-        [".$jardin['p_point_4']."]
+        [".$jardin['p_point1']."],
+        [".$jardin['p_point2']."],
+        [".$jardin['p_point3']."],
+        [".$jardin['p_point4']."]
     ], {
         color: '#5e7f38'
     }).addTo(map);";
 
-    echo "var marker".$jardin['id']." = L.marker([".$jardin['marker']."], {
+    echo "var marker".$jardin['id']." = L.marker([".$jardin['co_marker']."], {
         icon: image_nom,
-        alt: '" .$jardin['nom']."'
-    }).addTo(map).bindPopup('".$jardin['nom']."<br>".$jardin['adresse']."');";
+        alt: '" .addSlashes($jardin['nom'])."'
+    }).addTo(map).bindPopup('".addSlashes($jardin['nom'])."<br>".addSlashes($jardin['adresse'])."');";
 
+    }
 echo '</script>';
-}
 ?>
