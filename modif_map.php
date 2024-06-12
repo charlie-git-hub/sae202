@@ -1,30 +1,79 @@
 
 <h1>Ajout</h1>
+<?php 
+$nom = $_GET['nom'];
+require ('traitements/conf.inc.php');
 
-<form method="POST" action="traitements/valid_ajout_map.php" enctype="multipart/form-data">
+try {
+    // Créer une nouvelle connexion PDO à la base de données
+    $db = new PDO('mysql:host='.HOST.';dbname='.DBNAME, USER, PASSWORD);
+    // Définir le mode d'erreur PDO sur Exception
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Préparer la requête SQL pour récupérer les informations du jardin correspondant au nom
+    $req = $db->prepare("SELECT * FROM jardins WHERE nom = :nom");
+    // Exécuter la requête en passant le paramètre
+    $req->execute([':nom' => $nom]);
+
+    // Récupérer tous les résultats de la requête dans un tableau associatif
+    $jardins = $req->fetch(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    // En cas d'erreur, afficher le message d'erreur
+    echo 'Erreur : ' . $e->getMessage();
+}
+
+?>
+<form method="POST" action="traitements/valid_modif_map.php" enctype="multipart/form-data">
     <label for="id">ID :</label>
-    <input type="text" name="id" id="id" required><br><br>
+    <input type="text" name="id" id="id"  value="<?php echo $jardins['id']; ?>" required><br><br>
     <label for="nom">Nom :</label>
-<input type="text" name="nom" id="nom" required><br><br>
+<input type="text" name="nom" id="nom" value="<?php echo $jardins['nom']; ?>" required><br><br>
 
-<label for="coordonnees1">Coordonnées du point 1 :</label>
-<input type="text" name="coordonnees1" id="coordonnees1" required><br><br>
+<label for="adresse">adresse :</label>
+<input type="text" name="adresse" id="adresse" value="<?php echo $jardins['adresse']; ?>" required><br><br>
 
-<label for="coordonnees2">Coordonnées du point 2 :</label>
-<input type="text" name="coordonnees2" id="coordonnees2" required><br><br>
+<label for="acteur">acteur :</label>
+<input type="text" name="acteur" id="acteur" value="<?php echo $jardins['acteur']; ?>" required><br><br>
 
-<label for="coordonnees3">Coordonnées du point 3 :</label>
-<input type="text" name="coordonnees3" id="coordonnees3" required><br><br>
+<label for="p_point1">Coordonnées du point 1 :</label>
+<input type="text" name="p_point1" id="p_point1" value="<?php echo $jardins['p_point1']; ?>" required><br><br>
 
-<label for="coordonnees4">Coordonnées du point 4 :</label>
-<input type="text" name="coordonnees4" id="coordonnees4" required><br><br>
+<label for="p_point2">Coordonnées du point 2 :</label>
+<input type="text" name="p_point2" id="p_point2" value="<?php echo $jardins['p_point2']; ?>" required><br><br>
 
+<label for="p_point3">Coordonnées du point 3 :</label>
+<input type="text" name="p_point3" id="p_point3" value="<?php echo $jardins['p_point3']; ?>" required><br><br>
 
-    <label for="coordonnees">Coordonnées du marker :</label>
-    <input type="text" name="coordonnees" id="coordonnees" required><br><br>
+<label for="p_point4">Coordonnées du point 4 :</label>
+<input type="text" name="p_point4" id="p_point4" value="<?php echo $jardins['p_point4']; ?>" required><br><br>
 
-    <label for="image">Choisir une image pour le marker :</label>
-    <input type="file" name="image" id="image" required><br><br>
+    <label for="co_marker">Coordonnées du marker :</label>
+    <input type="text" name="co_marker" id="co_marker" value="<?php echo $jardins['co_marker']; ?>" required><br><br>
+
+    <label for="marker">Choisir une image pour le marker :</label>
+    <input type="file" name="marker" id="marker" value="<?php echo $jardins['marker']; ?>" required><br><br>
 
     <input type="submit" value="Envoyer">
 </form>
+
+<script>
+function checkId() {
+    const id = document.getElementById('id').value;
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'traitements/check_id.php', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const response = xhr.responseText;
+            const idError = document.getElementById('id-error');
+            if (response === 'exists') {
+                idError.textContent = 'Cet ID est déjà utilisé.';
+            } else {
+                idError.textContent = '';
+            }
+        }
+    };
+    xhr.send('id=' + id);
+}
+    </script>

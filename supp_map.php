@@ -1,5 +1,5 @@
 <?php
-$p_nom = $_GET['p_nom'];
+$nom = $_GET['nom'];
 
 include('conf.inc.php');
 $mabd = new PDO('mysql:host='.HOST.';dbname='.DBNAME.';charset=UTF8;',USER,PASSWORD)

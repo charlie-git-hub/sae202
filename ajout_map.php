@@ -19,6 +19,12 @@
     <label for="nom">Nom :</label>
     <input type="text" name="nom" id="nom" required><br><br>
 
+    <label for="adresse">adresse :</label>
+    <input type="text" name="adresse" id="adresse" required><br><br>
+    
+    <label for="acteur">acteur :</label>
+    <input type="text" name="acteur" id="acteur" required><br><br>
+
     <label for="p_point1">Coordonnées du point 1 :</label>
     <input type="text" name="p_point1" id="p_point1" required><br><br>
 
@@ -31,11 +37,11 @@
     <label for="p_point4">Coordonnées du point 4 :</label>
     <input type="text" name="p_point4" id="p_point4" required><br><br>
 
-    <label for="p_point">Coordonnées du marker :</label>
-    <input type="text" name="p_point" id="p_point" required><br><br>
+    <label for="co_marker">Coordonnées du marker :</label>
+    <input type="text" name="co_marker" id="co_marker" required><br><br>
 
-    <label for="image">Choisir une image pour le marker :</label>
-    <input type="file" name="image" id="image" required><br><br>
+    <label for="marker">Choisir une image pour le marker :</label>
+    <input type="file" name="marker" id="marker" required><br><br>
 
     <input type="submit" value="Envoyer">
 </form>
@@ -48,7 +54,7 @@ function validateForm() {
     for (let field of p_pointFields) {
         const value = document.getElementById(field).value;
         if (!p_pointPattern.test(value)) {
-            alert('Les coordonnées doivent être au format "latitude,longitude".');
+            alert('Les coordonnées doivent être au format "latitude,longitude".' <br>'Ne mettez aucun espaces et utilisez des points pour les décimales.');
             return false;
         }
     }
@@ -72,23 +78,31 @@ function checkId() {
         }
     };
     xhr.send('id=' + id);
+}function toggleFields() {
+    var id = document.getElementById('id');
+    var auto_id = document.getElementById('auto_id');
+
+    if (auto_id.checked) {
+        id.disabled = true;
+    } else {
+        id.disabled = false;
+    }
+
+    if (id.value !== '') {
+        auto_id.disabled = true;
+    } else {
+        auto_id.disabled = false;
+    }
 }
-var id = document.getElementById('id');
-var auto_id = document.getElementById('auto_id');
 
-if (document.getElementById('auto_id').checked) {
-            id.disabled = true;
-        } else {
-            id.disabled = false;
-        };
+// Appel initial de la fonction pour configurer les champs
+toggleFields();
 
-    id.addEventListener('input', () => {
-        if (auto_id.value !== '') {
-            auto_id.disabled = true;
-        } else {
-            auto_id.disabled = false;
-        }
-    });
+// Écouteur d'événement pour les changements dans auto_id
+document.getElementById('auto_id').addEventListener('change', toggleFields);
+
+// Écouteur d'événement pour les changements dans id
+document.getElementById('id').addEventListener('input', toggleFields);
 </script>
 
 </body>
