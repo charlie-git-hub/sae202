@@ -56,7 +56,14 @@
             color: #007BFF;
             margin: 1rem;
         }
-
+#b_ajout{
+    border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: #2990ff;
+}
         @media (min-width: 600px) {
             .card {
                 flex-direction: row;
@@ -79,7 +86,7 @@
     <div class="container">
         <div class="header">
             <h1>Gestion des Jardins</h1>
-            <a href="ajout_map.php">Ajout</a>
+            <a id="b_ajout"href="ajout_map.php">Ajout</a>
         </div>
 
         <?php 
@@ -99,11 +106,11 @@
                 echo '<p><strong>Nom:</strong> ' . htmlspecialchars($jardin['nom']) . '</p>';
                 echo '<p><strong>Adresse:</strong> ' . htmlspecialchars($jardin['adresse']) . '</p>';   
                 echo '<p><strong>Acteur:</strong> ' . htmlspecialchars($jardin['acteur']) . '</p>';   
-                echo '<p><strong>Co-Marker:</strong> ' . htmlspecialchars($jardin['co_marker']) . '</p>';
-                echo '<p><strong>P Point1:</strong> ' . htmlspecialchars($jardin['p_point1']) . '</p>';
-                echo '<p><strong>P Point2:</strong> ' . htmlspecialchars($jardin['p_point2']) . '</p>';
-                echo '<p><strong>P Point3:</strong> ' . htmlspecialchars($jardin['p_point3']) . '</p>';
-                echo '<p><strong>P Point4:</strong> ' . htmlspecialchars($jardin['p_point4']) . '</p>';
+                echo '<p><strong>Coordonnées marker:</strong> ' . htmlspecialchars($jardin['co_marker']) . '</p>';
+                echo '<p><strong>Coordonnées point 1:</strong> ' . htmlspecialchars($jardin['p_point1']) . '</p>';
+                echo '<p><strong>Coordonnées point 2:</strong> ' . htmlspecialchars($jardin['p_point2']) . '</p>';
+                echo '<p><strong>Coordonnées point 3:</strong> ' . htmlspecialchars($jardin['p_point3']) . '</p>';
+                echo '<p><strong>Coordonnées point 4:</strong> ' . htmlspecialchars($jardin['p_point4']) . '</p>';
                 echo '</div>';
                 echo '<div class="actions">';
                 echo '<a class="supp" href="traitements/supp_map.php?nom=' . urlencode($jardin['nom']) . '">Supprimer</a>';
