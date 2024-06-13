@@ -9,7 +9,7 @@
     <style> 
         #map { height: 100vh; } 
     </style>
-    <title>Document</title>
+    <title>Carte</title>
 </head>
 <body>
 <?php

@@ -1,48 +1,124 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Formulaire</title>
-</head>
-<body>
-    <a href="ajout_map.php">ajout</a>
-    <?php 
-    include('traitements/conf.inc.php');
-
-    try {
-        $mabd = new PDO('mysql:host='.HOST.';dbname='.DBNAME.';charset=UTF8;',USER,PASSWORD);
-        $mabd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-
-        $jardins = 'SELECT * FROM jardins';
-        $resultat_jardins = $mabd->query($jardins);
-
-        echo '<table id="listing">';
-        echo '<tr><th>nom</th><th>adresse</th><th>acteur</th><th>co_marker</th><th>p_point1</th><th>p_point2</th><th>p_point3</th><th>p_point4</th><th>marker</th><th>actions</th></tr>';
-
-        foreach ($resultat_jardins as $jardin) {
-            echo '<tr>';
-            echo '<td>' . htmlspecialchars($jardin['nom']) . '</td>';
-            echo '<td>' . htmlspecialchars($jardin['adresse']) . '</td>';   
-            echo '<td>' . htmlspecialchars($jardin['acteur']) . '</td>';   
-            echo '<td>' . htmlspecialchars($jardin['co_marker']) . '</td>';
-            echo '<td>' . htmlspecialchars($jardin['p_point1']) . '</td>';
-            echo '<td>' . htmlspecialchars($jardin['p_point2']) . '</td>';
-            echo '<td>' . htmlspecialchars($jardin['p_point3']) . '</td>';
-            echo '<td>' . htmlspecialchars($jardin['p_point4']) . '</td>';
-            echo '<td id="tab_img">' . '<img src="data/images/markers/' . htmlspecialchars($jardin['marker']) . '" alt="Marker"></td>'; 
-            echo '<td>';
-            echo '<td><a class="supp" href="traitements/supp_map.php?nom=' . urlencode($jardin['nom']) . '">supprimer</a> </td>';
-            echo '<td><a href="modif_map.php?nom=' . urlencode($jardin['nom']) . '">modifier</a></td>';
-            echo '</td>';
-            echo '</tr>';
+    <title>Gestion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
         }
 
-        echo '</table>';
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-    } catch (PDOException $e) {
-        echo "Erreur : " . $e->getMessage();
-        exit;
-    }
-    ?>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .card-content {
+            margin-top: 10px;
+        }
+
+        .card-content p {
+            margin: 5px 0;
+        }
+
+        .actions {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .actions a {
+            text-decoration: none;
+            color: #007BFF;
+            margin: 1rem;
+        }
+
+        @media (min-width: 600px) {
+            .card {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .card img {
+                width: 150px;
+                height: 150px;
+                margin-right: 20px;
+            }
+
+            .card-content {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Gestion des Jardins</h1>
+            <a href="ajout_map.php">Ajout</a>
+        </div>
+
+        <?php 
+        include('traitements/conf.inc.php');
+
+        try {
+            $mabd = new PDO('mysql:host='.HOST.';dbname='.DBNAME.';charset=UTF8;',USER,PASSWORD);
+            $mabd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+
+            $jardins = 'SELECT * FROM jardins';
+            $resultat_jardins = $mabd->query($jardins);
+
+            foreach ($resultat_jardins as $jardin) {
+                echo '<div class="card">';
+                echo '<img src="data/images/markers/' . htmlspecialchars($jardin['marker']) . '" alt="Marker">';
+                echo '<div class="card-content">';
+                echo '<p><strong>Nom:</strong> ' . htmlspecialchars($jardin['nom']) . '</p>';
+                echo '<p><strong>Adresse:</strong> ' . htmlspecialchars($jardin['adresse']) . '</p>';   
+                echo '<p><strong>Acteur:</strong> ' . htmlspecialchars($jardin['acteur']) . '</p>';   
+                echo '<p><strong>Co-Marker:</strong> ' . htmlspecialchars($jardin['co_marker']) . '</p>';
+                echo '<p><strong>P Point1:</strong> ' . htmlspecialchars($jardin['p_point1']) . '</p>';
+                echo '<p><strong>P Point2:</strong> ' . htmlspecialchars($jardin['p_point2']) . '</p>';
+                echo '<p><strong>P Point3:</strong> ' . htmlspecialchars($jardin['p_point3']) . '</p>';
+                echo '<p><strong>P Point4:</strong> ' . htmlspecialchars($jardin['p_point4']) . '</p>';
+                echo '</div>';
+                echo '<div class="actions">';
+                echo '<a class="supp" href="traitements/supp_map.php?nom=' . urlencode($jardin['nom']) . '">Supprimer</a>';
+                echo '<a href="modif_map.php?nom=' . urlencode($jardin['nom']) . '">Modifier</a>';
+                echo '</div>';
+                echo '</div>';
+            }
+
+        } catch (PDOException $e) {
+            echo "Erreur : " . $e->getMessage();
+            exit;
+        }
+        ?>
+    </div>
+
     <script>
         document.querySelectorAll('.supp').forEach(function(btn) {
             btn.addEventListener('click', function(event) {
