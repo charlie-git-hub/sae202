@@ -71,11 +71,11 @@ try {
 
     // Affichage d'un message de succès
     echo "Les données ont été insérées avec succès.<br>";
-    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../modif_map.php";}, 3000);}</script>';
+    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../gestion_map.php";}, 3000);}</script>';
     exit;
 } catch (PDOException $e) {
     // Gestion des erreurs d'insertion
     echo "Erreur lors de l'insertion des données : " . $e->getMessage();
-    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../modif_map.php";}, 3000);}</script>';
+    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../gestion_map.php";}, 3000);}</script>';
 }
 ?>

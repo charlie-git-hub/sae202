@@ -8,10 +8,9 @@ $p_point2 = $_POST['p_point2'] ?? null;
 $p_point3 = $_POST['p_point3'] ?? null;
 $p_point4 = $_POST['p_point4'] ?? null;
 $co_marker = $_POST['co_marker'] ?? null;
-$marker = $_FILES['image'] ?? null; // Correction ici
+$marker = $_FILES['marker'] ?? null; 
 $adresse = $_POST['adresse'] ?? null;
 $acteur = $_POST['acteur'] ?? null;
-
 try {
     $mabd = new PDO('mysql:host='.HOST.';dbname='.DBNAME.';charset=UTF8;',USER,PASSWORD);    
     $mabd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -47,10 +46,8 @@ if ($marker && $marker['error'] == UPLOAD_ERR_OK) {
         exit;
     }
 
-    // création d'un nouveau nom pour cette image téléchargée
     $image_num = $nombre_lignes + 1;
     $nouvelle_image = 'image'.$image_num.'.svg';
-
     if (is_uploaded_file($marker["tmp_name"])) {
         if (!move_uploaded_file($marker["tmp_name"], "../data/images/markers/" . $nouvelle_image)) {
             echo '<p>Problème avec la sauvegarde de l\'image, désolé...</p>';
@@ -96,12 +93,12 @@ try {
 
     // Affichage d'un message de succès
     echo "Les données ont été insérées avec succès.<br>";
-    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../modif_map.php";}, 3000);}</script>';
+    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../ajout_map.php";}, 3000);}</script>';
     exit;
 } catch (PDOException $e) {
     // Gestion des erreurs d'insertion
     echo "Erreur lors de l'insertion des données : " . $e->getMessage();
-    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../modif_map.php";}, 3000);}</script>';
+    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../ajout_map.php";}, 3000);}</script>';
     exit;
 }
-?>
+ ?>
