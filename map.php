@@ -13,28 +13,19 @@
 </head>
 <body>
 <?php
-//Récupérer le nom de l'image depuis les paramètres d'URL et le décoder
-// $filename = urldecode($_GET['image_nom']);
 
-// Inclure le fichier de configuration pour les informations de connexion à la base de données
 require ('traitements/conf.inc.php');
 
 try {
-    // Créer une nouvelle connexion PDO à la base de données
     $db = new PDO('mysql:host='.HOST.';dbname='.DBNAME, USER, PASSWORD);
-    // Définir le mode d'erreur PDO sur Exception
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Préparer la requête SQL pour récupérer les informations du jardin correspondant au nom de l'image
     $req = $db->prepare("SELECT * FROM jardins");
     $req->execute();
 
-    // Récupérer tous les résultats de la requête dans un tableau associatif
     $jardins = $req->fetchAll(PDO::FETCH_ASSOC);
  
 
 } catch (PDOException $e) {
-    // En cas d'erreur, afficher le message d'erreur
     echo 'Erreur : ' . $e->getMessage();
 }
 ?>

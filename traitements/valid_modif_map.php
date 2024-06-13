@@ -62,20 +62,16 @@ if ($marker && $marker['error'] == UPLOAD_ERR_OK) {
     exit;
 }
 
-// Préparation de la requête d'insertion
 $req = $mabd->prepare("REPLACE  INTO jardins (id, nom, p_point1, p_point2, p_point3, p_point4, marker, co_marker, adresse, acteur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 try {
-    // Exécution de la requête d'insertion avec les données du formulaire
     $req->execute([$id, $nom, $p_point1, $p_point2, $p_point3, $p_point4, $nouvelle_image, $co_marker, $adresse, $acteur]);
 
-    // Affichage d'un message de succès
     echo "Les données ont été insérées avec succès.<br>";
-    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../modif_map.php";}, 3000);}</script>';
+    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../gestion_map.php";}, 3000);}</script>';
     exit;
 } catch (PDOException $e) {
-    // Gestion des erreurs d'insertion
     echo "Erreur lors de l'insertion des données : " . $e->getMessage();
-    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../modif_map.php";}, 3000);}</script>';
+    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../gestion_map.php";}, 3000);}</script>';
 }
 ?>
