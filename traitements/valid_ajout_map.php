@@ -15,11 +15,9 @@ try {
     $mabd = new PDO('mysql:host='.HOST.';dbname='.DBNAME.';charset=UTF8;',USER,PASSWORD);    
     $mabd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Définition de la table utilisée
     $table = 'jardins';
 
-    // Récupération du nombre de lignes dans la table
-    $sql = "SELECT COUNT(*) AS total_lignes FROM $table"; // Correction ici
+    $sql = "SELECT COUNT(*) AS total_lignes FROM $table"; 
     $requete = $mabd->prepare($sql);
     $requete->execute();
     
@@ -39,7 +37,6 @@ else{
 }
 
 if ($marker && $marker['error'] == UPLOAD_ERR_OK) {
-    // vérification du format de l'image téléchargée
     $imageType = $marker['type'];
     if ($imageType != "image/svg+xml") {
         echo '<p>Désolé, le type d\'image n\'est pas reconnu ! Seuls le format svg est autorisé.</p>';
@@ -84,19 +81,15 @@ if ($marker && $marker['error'] == UPLOAD_ERR_OK) {
         }
         exit;
     }
-// Préparation de la requête d'insertion
 $req = $mabd->prepare("INSERT INTO $table (id, nom, p_point1, p_point2, p_point3, p_point4, marker, co_marker, adresse, acteur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 try {
-    // Exécution de la requête d'insertion avec les données du formulaire
     $req->execute([$id, $nom, $p_point1, $p_point2, $p_point3, $p_point4, $nouvelle_image, $co_marker, $adresse, $acteur]);
 
-    // Affichage d'un message de succès
     echo "Les données ont été insérées avec succès.<br>";
     echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../ajout_map.php";}, 3000);}</script>';
     exit;
 } catch (PDOException $e) {
-    // Gestion des erreurs d'insertion
     echo "Erreur lors de l'insertion des données : " . $e->getMessage();
     echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../ajout_map.php";}, 3000);}</script>';
     exit;

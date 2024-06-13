@@ -5,21 +5,15 @@ $nom = $_GET['nom'];
 require ('traitements/conf.inc.php');
 
 try {
-    // Créer une nouvelle connexion PDO à la base de données
     $db = new PDO('mysql:host='.HOST.';dbname='.DBNAME, USER, PASSWORD);
-    // Définir le mode d'erreur PDO sur Exception
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Préparer la requête SQL pour récupérer les informations du jardin correspondant au nom
     $req = $db->prepare("SELECT * FROM jardins WHERE nom = :nom");
-    // Exécuter la requête en passant le paramètre
     $req->execute([':nom' => $nom]);
 
-    // Récupérer tous les résultats de la requête dans un tableau associatif
     $jardins = $req->fetch(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-    // En cas d'erreur, afficher le message d'erreur
     echo 'Erreur : ' . $e->getMessage();
 }
 
