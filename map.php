@@ -64,7 +64,10 @@ try {
         'coloré': osmHOT,
         'clair': CartoDB_Positron,
         'nuit': Stadia_AlidadeSmoothDark
-    };</script>
+    };
+    L.control.layers(baseLayers).addTo(map);
+    
+    </script>
 
 <?php
 echo '<script>';

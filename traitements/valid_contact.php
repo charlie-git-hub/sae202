@@ -57,11 +57,11 @@ $headers = [
 
    $message = '  <div style="display: flex; justify-content: space-between; align-items: center;">
         <div>
-            <img src="https://media.discordapp.net/attachments/1247211686218174525/1247541911703654481/image.png?ex=666a4ab1&is=6668f931&hm=4e40f35fe711956c30299781cbde642ff518aa339d09b7dc744c236d9a68a76c&=&format=webp&quality=lossless&width=718&height=682" height="30px">
+            <img src="http://mmi23c09.mmi-troyes.fr/autres/image.webp" height="30px">
             <h2 style="color: #5E7F38; display: inline-block; vertical-align: bottom; margin: 0;">Bonjour !</h2>
             <p style="width: fit-content;">Votre demande a bien été reçue. <br>Nous la traiterons dans les plus brefs délais.</p>
         </div>
-        <img src="https://media.discordapp.net/attachments/1247819355387990067/1250693090944094368/panier_image.png?ex=666bde35&is=666a8cb5&hm=048daa395c4680bb09da2a1aa4a438fbf165fff25aacf09d818a123ccbd9750d&=&format=webp&quality=lossless&width=483&height=682" style="height: 200px; margin-left: 20px;">';
+        <img src="http://mmi23c09.mmi-troyes.fr/autres/panier_image.png" style="height: 200px; margin-left: 20px;">';
 
 $email_dest = $email;
 
