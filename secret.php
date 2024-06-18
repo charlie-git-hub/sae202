@@ -1,6 +1,6 @@
 <?php
 define('HOST','localhost');
-define('DBNAME','sae202');
-define('USER','phpmyadmin');
-define('PASSWORD','Mdp123');
+define('DBNAME','sae202Base');
+define('USER','sae202');
+define('PASSWORD','mdp');
 ?>

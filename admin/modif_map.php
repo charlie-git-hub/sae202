@@ -2,7 +2,7 @@
 <h1>Ajout</h1>
 <?php 
 $nom = $_GET['nom'];
-require ('traitements/secret.php');
+require ('secret.php');
 
 try {
     $db = new PDO('mysql:host='.HOST.';dbname='.DBNAME, USER, PASSWORD);
@@ -18,7 +18,7 @@ try {
 }
 
 ?>
-<form method="POST" action="traitement/valid_modif_map.php" enctype="multipart/form-data">
+<form method="POST" action="valid_modif_map.php" enctype="multipart/form-data">
     <label for="id">ID :</label>
     <input type="text" name="id" id="id"  value="<?php echo $jardins['id']; ?>" required><br><br>
     <label for="nom">Nom :</label>

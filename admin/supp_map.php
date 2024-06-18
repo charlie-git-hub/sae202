@@ -1,7 +1,7 @@
 <?php
 $nom = $_GET['nom'];
 
-include('secret.php');
+include('../secret.php');
 $mabd = new PDO('mysql:host='.HOST.';dbname='.DBNAME.';charset=UTF8;',USER,PASSWORD)
 ;$mabd->query('SET NAMES utf8;');
 $mabd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

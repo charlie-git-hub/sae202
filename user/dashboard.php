@@ -11,6 +11,9 @@ session_start()
     <link rel="stylesheet" href="../style2.css">
     <link rel="stylesheet" href="../style3.css">
     <link rel="stylesheet" href="../tb.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
   </head>
   <body>
     <section class="total">
@@ -920,7 +923,7 @@ c-13 20 -51 85 -85 143 l-61 106 85 319 c47 175 128 478 180 673 65 244 93
             <button class="button-2">Lancez-vous !</button>
 
             </div>
-            <?php require ('../traitement/secret.php');
+            <?php 
 
 try {
 $db = new PDO('mysql:host='.HOST.';dbname='.DBNAME, USER, PASSWORD);

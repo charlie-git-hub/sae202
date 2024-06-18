@@ -1,5 +1,5 @@
 <?php
-require('secret.php');
+require('../secret.php');
 
 $id = $_POST['id'] ?? null;
 $nom = $_POST['nom'] ?? null; 
@@ -87,11 +87,11 @@ try {
     $req->execute([$id, $nom, $p_point1, $p_point2, $p_point3, $p_point4, $nouvelle_image, $co_marker, $adresse, $acteur]);
 
     echo "Les données ont été insérées avec succès.<br>";
-    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../ajout_map.php";}, 3000);}</script>';
+    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "ajout_map.php";}, 3000);}</script>';
     exit;
 } catch (PDOException $e) {
     echo "Erreur lors de l'insertion des données : " . $e->getMessage();
-    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "../ajout_map.php";}, 3000);}</script>';
+    echo '<script>window.onload = function() {setTimeout(function(){window.location.href = "ajout_map.php";}, 3000);}</script>';
     exit;
 }
  ?>
