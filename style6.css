@@ -1,0 +1,263 @@
+@font-face {
+  font-family: "Integral CF Regular";
+  src: url("fonts/Integral\ CF\ Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: Larken-Regular;
+  src: url("fonts/Larken-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+*,
+body,
+main {
+  padding: 0;
+}
+.Jeux2,
+.box-jeux {
+  border-radius: 10px;
+}
+.box-jeux,
+.reserv-par-3 {
+  padding: 20px;
+  display: flex;
+}
+.favori,
+.text-jeux a:hover {
+  text-decoration: underline;
+}
+.box-jeux,
+.reserv-par-3,
+.right-content,
+.stars {
+  display: flex;
+}
+.nom-profile,
+.reserv-par-3 {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
+*,
+.avis-table td h2,
+.avis-table td h3,
+.avis-table td h4,
+body {
+  margin: 0;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+main {
+  background-color: #fff4e2;
+}
+.produits {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.box-jeux {
+  flex-wrap: wrap;
+}
+.left-content {
+  flex: 1;
+  padding-right: 20px;
+}
+.right-content {
+  flex: 2;
+  flex-direction: column;
+}
+.Jeux2 {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.profil-img,
+.profil-img2 {
+  border-radius: 50%;
+  object-fit: cover;
+}
+.profil svg {
+  width: auto;
+  height: auto;
+}
+.reserv-par-3 {
+  width: 40%;
+  position: relative;
+  top: -20px;
+  margin: 0 auto;
+  justify-content: center;
+  background-color: #36f666;
+  opacity: 0.5;
+  border-left: 3px solid #1bc51b;
+}
+.monbtn,
+.monbtn:hover {
+  background-color: #1abc9c;
+}
+.profil-img {
+  width: 50px;
+  height: 50px;
+}
+.profil-img2 {
+  width: 150px;
+  height: 150px;
+}
+.text-jeux h1 {
+  font-size: 2em;
+  margin-top: 45px;
+  color: #2c3e50;
+}
+th h2 {
+  color: #000;
+}
+.text-jeux h2 {
+  font-size: 1.5em;
+  margin-top: 45px;
+  color: #16a085;
+}
+.text-jeux h3.en_stock {
+  margin-top: 45px;
+  color: #27ae60;
+}
+.text-jeux h3.rupture {
+  color: #e74c3c;
+}
+.text-jeux p {
+  font-size: 1em;
+  color: #000;
+}
+.text-jeux a {
+  text-decoration: none;
+  color: #2980b9;
+}
+.favori {
+  font-weight: 700;
+  color: gray;
+}
+.stars-wrapper {
+  margin-top: 10px;
+}
+.monbtn,
+h3 {
+  margin-top: 45px;
+}
+.footer-h2 h2 {
+  color: wheat;
+}
+.stars i {
+  font-size: 1.5em;
+  color: #bdc3c7;
+  cursor: pointer;
+}
+.avis-table th,
+.monbtn {
+  color: #fff;
+}
+.stars i.las {
+  color: #b8860b;
+}
+.monbtn {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-bottom: 40px;
+  transition: background-color 0.3s;
+}
+.avis-table,
+form {
+  margin-top: 20px;
+}
+.btn-ajout-panier {
+  display: flex;
+  align-items: center;
+  height: auto;
+}
+.logo-panier2 {
+  margin-right: 10px;
+  display: none;
+}
+.bouton-invisible {
+  background: 0 0;
+  border: none;
+  cursor: pointer;
+}
+#heart-produit2 svg {
+  fill: none;
+}
+#heart-produit2 svg.feather-heart {
+  stroke: red;
+}
+#heart-produit2 svg.feather-heart[fill="red"] {
+  fill: red;
+}
+.containerr--01 h3 {
+  display: inline-block;
+  margin-right: 10px;
+}
+.avis-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 70px;
+}
+.nom-profile {
+  color: #000;
+  font-size: 16px;
+}
+.avis-table td,
+.avis-table th {
+  padding: 10px;
+}
+.photo-avis {
+  max-width: 100px;
+  border-radius: 10px;
+}
+.contenu-jardin {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+  margin-left: 50px;
+}
+.contenu-jardin .colonne {
+  flex: 1;
+  min-width: 150px;
+  margin-right: 10px;
+}
+.contenu-jardin ul {
+  list-style-type: none;
+  padding: 0;
+}
+.contenu-jardin ul li {
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.produits {
+  margin-top: 200px;
+}
+@media (max-width: 768px) {
+  .box-jeux {
+    flex-direction: column;
+  }
+  .left-content,
+  .right-content {
+    padding: 0;
+  }
+  .right-content {
+    margin-top: 20px;
+  }
+  .profil {
+    display: flex;
+    align-items: center;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-size: 24px;
+    gap: 10px;
+  }
+  .profil-img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+  }
+}

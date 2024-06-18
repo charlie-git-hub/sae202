@@ -1,0 +1,174 @@
+@font-face {
+  font-family: "Integral CF Regular";
+  src: url("fonts/Integral\ CF\ Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: Larken-Regular;
+  src: url("fonts/Larken-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+@media screen and (min-width: 768px) {
+  .loader,
+  .loader.active {
+    width: 100vw;
+    height: 100vh;
+  }
+  .dyna-01,
+  .loader {
+    display: flex;
+    position: fixed;
+  }
+  .contact-01,
+  .etapes {
+    margin-bottom: 80px;
+  }
+  nav svg {
+    width: 200px;
+  }
+  .loader {
+    align-items: center;
+    justify-content: center;
+    background-color: #ffe4b2;
+    z-index: -2;
+    transition: opacity 0.2s;
+  }
+  .loader.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .loader img {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+  }
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  nav .cta span {
+    font-size: 20px;
+  }
+  nav .cta svg {
+    width: 30px;
+    position: relative;
+    top: -2px;
+  }
+  .title-01 {
+    font-size: 60px;
+  }
+  .dyna-01.active {
+    z-index: 9;
+    width: 10%;
+    padding: 10px;
+  }
+  .dyna-01 {
+    z-index: 9;
+    justify-content: center;
+    align-items: center;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: wheat;
+    width: 13%;
+    height: 25px;
+    padding: 15px;
+    border-radius: 30px;
+    transition: width 0.5s, padding 0.5s;
+  }
+  .dyna {
+    display: none;
+  }
+  .container-01 {
+    font-size: 55px;
+  }
+  .container-02,
+  .container-03 {
+    align-items: center;
+    font-size: 28px;
+  }
+  .container-04-title h1,
+  .etapes {
+    font-size: 80px;
+  }
+  .container-02 img,
+  .container-03 img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+  }
+  .container-04-title p {
+    font-size: 40px;
+  }
+  .parent-1 {
+    font-size: 30px;
+  }
+  .jardins {
+    font-size: 80px;
+    margin-top: 80px;
+  }
+  .container-02-title,
+  .container-02-title .cta span,
+  .container-05,
+  .container-05 .cta span,
+  .form button {
+    font-size: 28px;
+  }
+  .contact-01 {
+    font-size: 80px;
+    margin-top: 120px;
+  }
+  .footer-p1,
+  .footer-p2 {
+    color: wheat;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    padding: 20px;
+    height: auto;
+    font-size: 17px;
+    width: 40%;
+  }
+  .parent div {
+    font-size: 45px;
+  }
+  .parent div svg {
+    margin-top: 50px;
+  }
+  .footer-p2 {
+    text-align: center;
+  }
+  .footer-p2 ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-p2 ul a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .footer-p3 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .valide,
+  .valide-2 {
+    opacity: 0.5;
+    padding: 10px;
+    width: 400px;
+    margin-bottom: 20px;
+  }
+  footer {
+    border-top: 2px solid grey;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .footer-p1-01 {
+    margin-top: 40px;
+  }
+}

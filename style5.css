@@ -1,0 +1,245 @@
+@import url(https://db.onlinewebfonts.com/c/f1fcc5aed1e20fc0cdb9f8a7573625bd?family=Integral+CF+Regular);
+@import url(https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap);
+@import url(https://db.onlinewebfonts.com/c/61637e80c3e88812def846832594f24d?family=Larken-Regular);
+.button:hover:after,
+.button:hover:before {
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+form,
+table {
+  margin: 100px auto;
+}
+a.gestion,
+button[type="submit"] {
+  background-color: #3cb371;
+  font-size: 16px;
+}
+.reponseF,
+.reponseV,
+form {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  box-sizing: border-box;
+  width: 100%;
+}
+body,
+html {
+  background-color: #fff4e2;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
+h2,
+h3 {
+  font-family: "Integral CF Regular";
+  text-align: center;
+}
+h3 {
+  font-size: 46px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+h2 {
+  width: 100%;
+  margin: 20px;
+  font-size: 18px;
+}
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 4px;
+  background-color: #39bda7;
+  transition: 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  font-size: 19px;
+  border: 0;
+  margin: 30px auto;
+  cursor: pointer;
+  color: #000;
+  z-index: 1;
+}
+.button:after,
+.button:before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  display: block;
+  transition: 0.5s cubic-bezier(0.55, 0, 0.1, 1) 0.1s;
+  z-index: -1;
+  background-color: #39bda7;
+}
+.crud,
+.gestion {
+  color: #ff4949;
+  position: relative;
+  text-decoration: none;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
+.button:before {
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+}
+.button:after {
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+}
+.button:hover {
+  color: #fff;
+  border: 1px solid #39bda7;
+}
+.button:hover:before {
+  top: -35%;
+  background-color: #39bda7;
+}
+.button:hover:after {
+  top: -45%;
+  background-color: #39bda7;
+}
+nav {
+  display: flex;
+  justify-content: center;
+}
+table {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
+.number,
+td .maps {
+  width: 150px;
+}
+thead {
+  text-align: left;
+  padding: 50px;
+}
+a .crud {
+  color: #000;
+  text-decoration: none;
+}
+.gestion {
+  left: 200px;
+  margin: 100px 10px 10px;
+}
+.crud {
+  left: 0;
+  margin: 10px;
+}
+.crud:hover,
+.gestion:hover {
+  text-decoration: underline;
+}
+.table-1 {
+  width: 100px;
+}
+td img {
+  width: 250px;
+  height: 250px;
+}
+form {
+  background-color: #fff;
+  border: 2px solid #8fbc8f;
+  border-radius: 10px;
+  padding: 20px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #2f4f4f;
+  font-weight: 700;
+}
+input[type="file"],
+input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.formulaire input[type="submit"],
+a.gestion,
+button[type="submit"] {
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+}
+.custom-file-label {
+  display: block;
+  background-color: #8fbc8f;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.custom-file-label:hover {
+  background-color: #7fa87f;
+}
+button[type="submit"] {
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+a.gestion:hover,
+button[type="submit"]:hover {
+  background-color: #2e8b57;
+}
+input[type="text"]::placeholder {
+  color: #aaa;
+}
+input[type="file"] {
+  display: none;
+}
+a.gestion {
+  display: inline-block;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 20px;
+}
+.reponseF,
+.reponseV {
+  background-color: #fff;
+  border: 2px solid #3cb371;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+}
+.reponseF {
+  border-color: #e74c3c;
+}
+p.valide {
+  color: #2f4f4f;
+  font-size: 10px;
+}
+.reponseF a,
+.reponseV a {
+  color: #3cb371;
+  text-decoration: none;
+  font-weight: 700;
+}
+.reponseF a:hover,
+.valide a:hover {
+  color: #2e8b57;
+}
+.valide {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
+.formulaire input[type="submit"] {
+  background-color: #3bc84e;
+  color: #fff;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.formulaire input[type="submit"]:hover {
+  background-color: #3bc84e;
+}
