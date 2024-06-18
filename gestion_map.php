@@ -90,7 +90,7 @@
         </div>
 
         <?php 
-        include('traitements/conf.inc.php');
+        include('traitement/secret.php');
 
         try {
             $mabd = new PDO('mysql:host='.HOST.';dbname='.DBNAME.';charset=UTF8;',USER,PASSWORD);
@@ -101,7 +101,7 @@
 
             foreach ($resultat_jardins as $jardin) {
                 echo '<div class="card">';
-                echo '<img src="data/images/markers/' . htmlspecialchars($jardin['marker']) . '" alt="Marker">';
+                echo '<img src="images/markers/' . htmlspecialchars($jardin['marker']) . '" alt="Marker">';
                 echo '<div class="card-content">';
                 echo '<p><strong>Nom:</strong> ' . htmlspecialchars($jardin['nom']) . '</p>';
                 echo '<p><strong>Adresse:</strong> ' . htmlspecialchars($jardin['adresse']) . '</p>';   
@@ -113,7 +113,7 @@
                 echo '<p><strong>Coordonnées point 4:</strong> ' . htmlspecialchars($jardin['p_point4']) . '</p>';
                 echo '</div>';
                 echo '<div class="actions">';
-                echo '<a class="supp" href="traitements/supp_map.php?nom=' . urlencode($jardin['nom']) . '">Supprimer</a>';
+                echo '<a class="supp" href="traitement/supp_map.php?nom=' . urlencode($jardin['nom']) . '">Supprimer</a>';
                 echo '<a href="modif_map.php?nom=' . urlencode($jardin['nom']) . '">Modifier</a>';
                 echo '</div>';
                 echo '</div>';

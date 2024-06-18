@@ -2,7 +2,7 @@
 <h1>Ajout</h1>
 <?php 
 $nom = $_GET['nom'];
-require ('traitements/conf.inc.php');
+require ('traitements/secret.php');
 
 try {
     $db = new PDO('mysql:host='.HOST.';dbname='.DBNAME, USER, PASSWORD);
@@ -18,7 +18,7 @@ try {
 }
 
 ?>
-<form method="POST" action="traitements/valid_modif_map.php" enctype="multipart/form-data">
+<form method="POST" action="traitement/valid_modif_map.php" enctype="multipart/form-data">
     <label for="id">ID :</label>
     <input type="text" name="id" id="id"  value="<?php echo $jardins['id']; ?>" required><br><br>
     <label for="nom">Nom :</label>
@@ -55,7 +55,7 @@ try {
 function checkId() {
     const id = document.getElementById('id').value;
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'traitements/check_id.php', true);
+    xhr.open('POST', 'traitement/check_id.php', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {

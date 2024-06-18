@@ -10,7 +10,7 @@
 session_start();
 ?>
     <h2>Contactez-nous</h2>
-    <form action="traitements/valid_contact.php" method="post">
+    <form action="traitement/valid_contact.php" method="post">
         <div>
             <label for="nom">Nom :</label>
             <input type="text" id="nom" name="nom" required>

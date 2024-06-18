@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mar. 11 juin 2024 à 13:20
+-- Généré le : mar. 18 juin 2024 à 06:58
 -- Version du serveur : 10.3.39-MariaDB-0+deb10u2
 -- Version de PHP : 8.3.4
 
@@ -45,7 +45,7 @@ CREATE TABLE `jardins` (
 --
 
 INSERT INTO `jardins` (`id`, `nom`, `adresse`, `acteur`, `co_marker`, `p_point1`, `p_point2`, `p_point3`, `p_point4`, `marker`) VALUES
-(1, 'jardins ouvriers et familiaux', '120 Av. Edouard Herriot, 10000 Troyes', 'association des jardins ouvriers et familiaux de troyes', '48.27066, 4.08424', '48.27071, 4.08477', '48.27025, 4.08402', '48.27050, 4.08361', '48.27098, 4.08442', 'indicateur_carte.svg'),
+(1, 'jardins ouvriers et familiaux', '120 Av. Edouard Herriot, 10000 Troyes', 'association des jardins ouvriers et familiaux de troyes', '48.27066, 4.08424', '48.27071, 4.08477', '48.27025, 4.08402', '48.27050, 4.08361', '48.27098, 4.08442', 'image11.svg'),
 (2, 'l\'accord parfait', '43 Rue de la Brûlée, 10000 Troyes', 'l\'accord parfait', '48.28645, 4.10231', '48.28657, 4.10130', '48.28582, 4.10234', '48.28608, 4.10315', '48.28712, 4.10227', 'indicateur_carte.svg'),
 (3, 'jardin de partage', '31,2 Av. Marie de Champagne, 10000 Troyes', 'le jardin de partage des sénardes', '48.30503,4.06307', '48.30483,4.06099', '48.30613,4.06385', '48.30501,4.06503', '48.30405,4.06188', 'indicateur_carte.svg'),
 (4, 'secours catholique', '3 Rue Raymond Claudel, 10000 Troyes', 'secours catholique', '48.31014,4.08774', '48.31037,4.08727', '48.31053,4.08807', '48.30996,4.08824', '48.30961,4.08725', 'indicateur_carte.svg'),

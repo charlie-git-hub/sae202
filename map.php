@@ -7,14 +7,14 @@
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
           crossorigin=""/>
     <style> 
-        #map { height: 100vh; } 
+        #map { height: 100px; } 
     </style>
     <title>Carte</title>
 </head>
 <body>
 <?php
 
-require ('traitements/conf.inc.php');
+require ('traitement/secret.php');
 
 try {
     $db = new PDO('mysql:host='.HOST.';dbname='.DBNAME, USER, PASSWORD);
@@ -66,32 +66,39 @@ try {
         'nuit': Stadia_AlidadeSmoothDark
     };
     L.control.layers(baseLayers).addTo(map);
-    
-    </script>
 
+    </script>
 <?php
 echo '<script>';
-foreach ($jardins as $jardin){
+
+foreach ($jardins as $jardin) {
+    $image_url = 'images/markers/' . $jardin['marker'];
+
+    // Échappement des apostrophes dans les noms et adresses des jardins
+    $nom_jardin = addslashes($jardin['nom_jardins']);
+    $adresse_jardin = addslashes($jardin['adresse_jardins']);
+
+    // Génération du code JavaScript pour chaque jardin
     echo "var image_nom = L.icon({
-        iconUrl: 'data/images/markers/".$jardin['marker']."',
+        iconUrl: '$image_url',
         iconSize: [30, 140],
         iconAnchor: [22, 94],
         popupAnchor: [-3, -76]
     });
-    var polygon_" .$jardin['id']. "= L.polygon([
-        [".$jardin['p_point1']."],
-        [".$jardin['p_point2']."],
-        [".$jardin['p_point3']."],
-        [".$jardin['p_point4']."]
+    var polygon_" . $jardin['id_jardins'] . "= L.polygon([
+        [" . $jardin['p_point1'] . "],
+        [" . $jardin['p_point2'] . "],
+        [" . $jardin['p_point3'] . "],
+        [" . $jardin['p_point4'] . "]
     ], {
         color: '#5e7f38'
     }).addTo(map);";
 
-    echo "var marker".$jardin['id']." = L.marker([".$jardin['co_marker']."], {
+    echo "var marker" . $jardin['id_jardins'] . " = L.marker([" . $jardin['co_marker'] . "], {
         icon: image_nom,
-        alt: '" .addSlashes($jardin['nom'])."'
-    }).addTo(map).bindPopup('".addSlashes($jardin['nom'])."<br>".addSlashes($jardin['adresse'])."');";
+        alt: '$nom_jardin'
+    }).addTo(map).bindPopup('$nom_jardin<br>$adresse_jardin');";
+}
 
-    }
 echo '</script>';
 ?>

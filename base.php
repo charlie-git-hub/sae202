@@ -1,5 +1,5 @@
 <?php
-$secret='secret.php';
+$secret='traitement/secret.php';
 $i=0;
 while (!file_exists($secret)) {
     if($i>10) {
